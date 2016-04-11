@@ -4,10 +4,12 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+
   end
 
   def show
+    # @user = User.find_by(params[:id])
+
   end
 
   def create
@@ -18,11 +20,13 @@ class UsersController < ApplicationController
       })
 
     if @user.save
+      session[:user_id] = @user.id
       redirect_to '/'
     else
       render :new
     end
   end
+
 
   def edit
   end

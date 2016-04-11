@@ -10,7 +10,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-      redirect_to '/'
+    user = User.find_by(email: params[:email])
+
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id.to_s
+      redirect_to user_path(user)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -20,5 +27,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    session.delete(:user_id)
+    redirect_to '/'
   end
 end

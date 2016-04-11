@@ -1,34 +1,31 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
-  <div class="buttons">
+<h1>Sign in or signup</h1>
 
-      <div id="login">
-        <form action="sessions/index" method="get">
-          <button>login</button>
-        </form>
-      <div id="signup">
-        <form action="users/new" method="get">
-            <button> signup</button>
-        </form>
-      </div>
-    </div>
+<!--   <div id="login">
+    <form action="login" method="get">
+      <button>login</button>
+    </form>
   </div>
 
-      <div id="register">
-        <form action="users/new" method="get">
-            <button> register</button>
-        </form>
-      </div>
-
-<div>
-<h1> Welcome please sign in to access your account </h1>
-</div>
+  <div id="signup">
+    <form action="users/new" method="get">
+        <button> register</button>
+    </form>
+  </div>
+ -->
 
 
-
-
+<% if current_user %>
 <ul>
-<% @users.each do |x| %>
-    <li><%= x.email %></li>
-<% end %>
+  <% @users.each do |x| %>
+      <li><%= x.email %></li>
+  <% end %>
+
 </ul>
+<%= link_to 'logout', logout_path, method: :delete %>
+
+<% else %>
+
+  <a href="users/new">Register</a>
+  <a href="login">Login</a>
+
+<% end %>
