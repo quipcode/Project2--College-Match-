@@ -1,0 +1,34 @@
+<h1>Users#index</h1>
+<p>Find me in app/views/users/index.html.erb</p>
+  <div class="buttons">
+
+      <div id="login">
+        <form action="sessions/index" method="get">
+          <button>login</button>
+        </form>
+      <div id="signup">
+        <form action="users/new" method="get">
+            <button> signup</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+      <div id="register">
+        <form action="users/new" method="get">
+            <button> register</button>
+        </form>
+      </div>
+
+<div>
+<h1> Welcome please sign in to access your account </h1>
+</div>
+
+
+
+
+<ul>
+<% @users.each do |x| %>
+    <li><%= x.email %></li>
+<% end %>
+</ul>
