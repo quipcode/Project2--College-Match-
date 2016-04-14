@@ -2,6 +2,7 @@ class CollegesController < ApplicationController
 
 
   def show
+    @results = College.search(params[:college_name])
   end
 
   def create
@@ -19,19 +20,14 @@ class CollegesController < ApplicationController
   end
 
 
+  # Show all colles a user has favorited
   def index
-    url = "https://inventory.data.gov/api/action/datastore_search?resource_id=38625c3d-5388-4c16-a30f-d105432553a4"
-    response = HTTParty.get(url)
 
-
-    @colleges = response
-    @desired_college = params[:q]
-
-    def sift_college
-      @colleges.each do |x|
-
-      end
-    end
   end
 
+  # search api for params[:college_name]
+  # and create?
+  def search_api
+    @results = College.search(params[:college_name])
+  end
 end

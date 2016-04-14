@@ -1,0 +1,7 @@
+
+<p>Select the college you wish to add to your wish list</p>
+<ul>
+<% @results.each do |result| %>
+  <li><%= link_to result["INSTNM"] %> </a> </li>
+<% end %>
+</ul>

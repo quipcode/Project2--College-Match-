@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get '/enter_college' =>  'colleges#index', as: :college
 
+  get '/colleges_search' => 'colleges#search_api', as: :college_search
   # post '/enter_college' => 'colleges#create'
 
   get 'colleges/show'

@@ -79,11 +79,9 @@
 
 <p>Please enter the name of the college you wish to attend</p>
 
-<%= form_tag(college_path,{method:"get"}) do %>
-
-  <%= text_field_tag(:q) %>
+<%= form_tag(college_search_path,{method: :get}) do %>
+  <%= text_field_tag(:college_name) %>
   <%= submit_tag("Search") %>
-
 <%end%>
 
 
