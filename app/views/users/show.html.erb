@@ -1,11 +1,4 @@
 
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-</head>
-<body>
-
 <h1>Hello there <%=@user.first_name %></h1>
 
 <p>Below is a listing of the top colleges you may wish to attend </p>
@@ -76,6 +69,9 @@
 </table>
 
 <%= link_to 'logout', logout_path, method: :delete %>
+<%= link_to 'edit account', edit_path, method: :get %>
+<%= link_to "delete account", delete_path, method: :delete, confirm: "Are you sure?" %>
+
 
 <p>Please enter the name of the college you wish to attend</p>
 
@@ -83,17 +79,5 @@
   <%= text_field_tag(:college_name) %>
   <%= submit_tag("Search") %>
 <%end%>
-
-
-
-
-
-
-
-</body>
-</html>
-
-
-
 
 

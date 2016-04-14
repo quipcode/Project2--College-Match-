@@ -15,13 +15,18 @@
 
 
 <% if current_user %>
+
 <ul>
+
   <% @users.each do |x| %>
       <li><%= x.email %></li>
   <% end %>
 
 </ul>
 <%= link_to 'logout', logout_path, method: :delete %>
+
+
+<%= params %>
 
 <% else %>
 

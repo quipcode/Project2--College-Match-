@@ -1,26 +1,19 @@
 class CollegesController < ApplicationController
-
+  before_action :target_college, only: [:show, :search_api]
 
   def show
-    @results = College.search(params[:college_name])
+    @college = College.target(@target)
   end
 
   def create
-    redirect_to '/enter_college'
-    @desired_college = params[:college_name]
-    # @college = College.new
-    url = "https://inventory.data.gov/api/action/datastore_search?resource_id=38625c3d-5388-4c16-a30f-d105432553a4"
-    # response = HTTParty.get(url)
-    # @college_list = response["result"]["record"]
-    # @target_college = @college_list.select do |x|
-    #   x.include? params[:college_name]
-    # end
-
+    @college = College.new
 
   end
 
+  def new
+  end
 
-  # Show all colles a user has favorited
+  # Show all colleges a user has favorited
   def index
 
   end
@@ -29,5 +22,16 @@ class CollegesController < ApplicationController
   # and create?
   def search_api
     @results = College.search(params[:college_name])
+
   end
+
+private
+  def college_params
+    params.require(:college).permit(:name, :address, :city, :state, :zip, :univ_id, :link, :user_id)
+  end
+
+  def target_college
+    @target ||= ""
+  end
+
 end

@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+
+
+
   def index
     @users = User.all
+
   end
 
   def new
@@ -8,10 +13,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    # @user = User.find_by(params[:id])
-    @user = User.find(params[:id])
-    url = "https://inventory.data.gov/api/action/datastore_search?resource_id=38625c3d-5388-4c16-a30f-d105432553a4"
 
+    url = "https://inventory.data.gov/api/action/datastore_search?resource_id=38625c3d-5388-4c16-a30f-d105432553a4"
     response = HTTParty.get(url)
     @sector = response
   end
@@ -32,12 +35,23 @@ class UsersController < ApplicationController
   end
 
   def update
+    if @user.update_attributes(user_params)
+      redirect_to '/'
+    else
+      render :edit
+    end
+
   end
 
   def destroy
+    @user.destroy
+    redirect_to '/'
   end
 
 private
+  def set_user
+    @user = User.find_by(id: params[:id])
+  end
 
   def user_params
       params.require(:user).permit(:first_name, :last_name, :current_school, :dob, :gpa, :email, :password, :password_confirmation)

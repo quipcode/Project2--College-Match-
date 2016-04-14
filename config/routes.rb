@@ -5,17 +5,25 @@ Rails.application.routes.draw do
   get '/colleges_search' => 'colleges#search_api', as: :college_search
   # post '/enter_college' => 'colleges#create'
 
-  get 'colleges/show'
+  get 'colleges/show' => 'colleges#show', as: :college_show
 
-  post 'users' => 'users#create'
+  post 'colleges' => 'colleges#create', as: :add
+
+
 
   get 'users' => 'users#index'
+
+  post 'users' => 'users#create'
 
   get 'users/new' => 'users#new'
 
   get 'users/:id' => 'users#show', as: :user
 
-  get 'users/edit'
+  patch  'users/:id' => 'users#update'
+
+delete  'users/:id' => 'users#destroy', as: :delete
+
+  get 'users/:id/edit' => 'users#edit', as: :edit
 
 
 
