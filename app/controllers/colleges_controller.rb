@@ -3,12 +3,6 @@ class CollegesController < ApplicationController
 
   def show
     # @college = College.new
-
-
-
-  end
-
-  def create
     @college = College.new(name: params["INSTNM"], address: params["ADDR"], city: params["CITY"], state: params["STABBR"], zip: params["ZIP"], univ_id: params["UNITID"], link: params["WEBADDR"], user_id: "7")
 
     if @college.save
@@ -16,6 +10,9 @@ class CollegesController < ApplicationController
     else
       render :show
     end
+  end
+
+  def create
   end
 
   def new

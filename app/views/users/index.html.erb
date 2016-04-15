@@ -1,32 +1,17 @@
 <h1>Sign in or signup</h1>
 
-<!--   <div id="login">
-    <form action="login" method="get">
-      <button>login</button>
-    </form>
-  </div>
-
-  <div id="signup">
-    <form action="users/new" method="get">
-        <button> register</button>
-    </form>
-  </div>
- -->
 
 
 <% if current_user %>
 
-<ul>
+  <ul>
 
-  <% @users.each do |x| %>
-      <li><%= x.email %></li>
-  <% end %>
+    <% @users.each do |x| %>
+        <li><%= link_to x.email, user_path(x) , method: :get %></li>
+    <% end %>
 
-</ul>
-<%= link_to 'logout', logout_path, method: :delete %>
-
-
-<%= params %>
+  </ul>
+  <%= link_to 'logout', logout_path, method: :delete %>
 
 <% else %>
 

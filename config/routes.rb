@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   get '/colleges_search' => 'colleges#search_api', as: :college_search
 
-
   get 'colleges/show' => 'colleges#show', as: :college_show
 
   post 'colleges' => 'colleges#create', as: :add_college
