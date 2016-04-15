@@ -9,10 +9,10 @@ class CollegesController < ApplicationController
   end
 
   def create
-    @college = College.new(name: params["INSTNM"], address: params["ADDR"], city: params["CITY"], state: params["STABBR"], zip: params["ZIP"], univ_id: params["UNITID"], link: params["WEBADDR"], user_id: "7" )
+    @college = College.new(name: params["INSTNM"], address: params["ADDR"], city: params["CITY"], state: params["STABBR"], zip: params["ZIP"], univ_id: params["UNITID"], link: params["WEBADDR"], user_id: "7")
 
     if @college.save
-      redirect_to '/'
+      redirect_to '/colleges'
     else
       render :show
     end
