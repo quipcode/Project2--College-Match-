@@ -1,5 +1,5 @@
 class College < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, dependent: :destroy
 
   def self.search(name)
     base_url = "https://inventory.data.gov"

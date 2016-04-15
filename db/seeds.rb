@@ -7,3 +7,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # User.destroy_all
+c1 = College.create({name: 'Alabama A & M University', address: '4900 Meridian Street', city: 'Normal', state: 'AL', zip: '35762', univ_id: '100654', link: 'www.aamu.edu/'})
+

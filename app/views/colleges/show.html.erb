@@ -2,6 +2,19 @@
 <p>Find me in app/views/colleges/show.html.erb</p>
 
 
-<% @results.each do |result| %>
-  <li> <%= result["INSTNM"] %>  </li>
-<% end %>
+
+<%= params["INSTNM"]%> <br>
+<%= params["ADDR"]%> <br>
+<%= params["CITY"]%> <br>
+<%= params["STABBR"]%> <br>
+<%= params["ZIP"]%> <br>
+<%= params["UNITID"]%> <br>
+<%= params["WEBADDR"]%> <br>
+<%= params["INSTNM"]%> <br>
+
+
+
+
+<%= link_to 'Add to wishlist', add_college_path(params["record"]), method: :post %>
+
+

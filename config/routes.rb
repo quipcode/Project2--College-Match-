@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
 
-  get '/enter_college' =>  'colleges#index', as: :college
+  get 'colleges' =>  'colleges#index', as: :college
 
   get '/colleges_search' => 'colleges#search_api', as: :college_search
   # post '/enter_college' => 'colleges#create'
 
   get 'colleges/show' => 'colleges#show', as: :college_show
 
-  post 'colleges' => 'colleges#create', as: :add
+  post 'colleges' => 'colleges#create', as: :add_college
 
+
+
+  # get '/college/:id' => 'college#show', as: :college_show
+  # get '/beans/:id' => 'beans#show', as: :bean
 
 
   get 'users' => 'users#index'
@@ -21,7 +25,7 @@ Rails.application.routes.draw do
 
   patch  'users/:id' => 'users#update'
 
-delete  'users/:id' => 'users#destroy', as: :delete
+  delete 'users/:id' => 'users#destroy', as: :delete
 
   get 'users/:id/edit' => 'users#edit', as: :edit
 

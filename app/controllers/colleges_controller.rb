@@ -2,27 +2,35 @@ class CollegesController < ApplicationController
   before_action :target_college, only: [:show, :search_api]
 
   def show
-    @college = College.target(@target)
+    # @college = College.new
+
+
+
   end
 
   def create
-    @college = College.new
+    @college = College.new(name: params["INSTNM"], address: params["ADDR"], city: params["CITY"], state: params["STABBR"], zip: params["ZIP"], univ_id: params["UNITID"], link: params["WEBADDR"], user_id: "7" )
 
+    if @college.save
+      redirect_to '/'
+    else
+      render :show
+    end
   end
 
   def new
+    @college = College.new
   end
 
   # Show all colleges a user has favorited
   def index
-
+    @colleges = College.all
   end
 
   # search api for params[:college_name]
   # and create?
   def search_api
     @results = College.search(params[:college_name])
-
   end
 
 private
